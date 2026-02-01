@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluxion Fusion | Formula Ethara</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #000000, #0a0a0a);
+  color: #22d3ee;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s;
+}
+/* Sponsor logo fitting */
+.sponsors img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* keeps logo aspect ratio */
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+/* ===== TEAM MEMBER PHOTO FIX ===== */
+.team-img-box {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px auto; /* center box */
+  border-radius: 50%;       /* circle photos */
+  overflow: hidden;
+  border: 2px solid #22d3ee;
+  background: #000;
+  box-shadow: 0 0 12px rgba(34,211,238,0.5);
+}
+
+.team-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fills circle without stretching */
+  object-position: center top; /* keeps face centered */
+  transition: transform 0.4s ease;
+}
+
+.card:hover .team-img-box img {
+  transform: scale(1.08);
+}
+
+
+.card:hover .team-img-box img {
+  transform: scale(1.08);
+}
+
+
+.logo img {
+  height: 42px;
+  transition: transform 0.3s;
+}
+.logo img:hover {
+  transform: rotate(15deg);
+}
+.nav-links a {
+  margin-left: 20px;
+  font-size: 14px;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #22d3ee;
+  bottom: -4px;
+  left: 0;
+  transition: 0.3s;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero */
+.hero {
+  position: relative; 
+  text-align: center;
+  padding: 120px 20px;
+  background: linear-gradient(to right, #020617, #111827);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(34,211,238,0.1), rgba(255,0,255,0.1), rgba(34,211,238,0.1));
+  background-size: 200% 100%;
+  animation: streaks 5s linear infinite;
+  z-index: -1;
+}
+
+@keyframes streaks {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #22d3ee;
+}
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+.buttons {
+  margin-top: 30px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 0 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-primary {
+  background: #22d3ee;
+  color: black;
+}
+.btn-primary:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #22d3ee, 0 0 30px #22d3ee, 0 0 45px #22d3ee;
+}
+.btn-outline {
+  border: 1px solid #22d3ee;
+  color: #22d3ee;
+}
+.btn-outline:hover {
+  background: #22d3ee;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #22d3ee, 0 0 30px #22d3ee, 0 0 45px #22d3ee;
+}
+
+/* Sections */
+section {
+  padding: 80px 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+
+/* Card Styles */
+.card {
+  background: #020617;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(34,211,238,0.2);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(34,211,238,0.4);
+  color: #ffffff;
+}
+.card .icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+.card:hover .icon {
+  transform: rotate(15deg) scale(1.2);
+  text-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee, 0 0 30px #22d3ee;
+}
+.card h3 {
+  margin: 10px 0;
+}
+.card p { color: #9ca3af; }
+.card p.description { color: #d1d5db; }
+
+.card:hover p {
+  transform: translateY(-5px);
+  opacity: 1;
+  color: #ffffff;
+}
+/* Dashed divider line for card */
+.card hr {
+  border: 1px dashed rgba(34,211,238,0.3);
+  margin: 10px 0;
+}
+
+/* Sponsors */
+.sponsors {
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid rgba(34, 211, 238, 0.2);
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero h1 { font-size: 48px; }
+}
+
+/* Smooth fade-in on scroll */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: rgba(0,0,0,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+}
+
+.modal-caption {
+  text-align: center;
+  color: #22d3ee;
+  margin-top: 12px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #22d3ee;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  font-size: 18px;
+  background: #22d3ee;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 6px;
+  display: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#backToTop:hover {
+  background: #00bcd4;
+}
+
+
+#chatBotBtn:hover { 
+  background: #00bcd4; 
+  transform: scale(1.1); 
+}
+
+#chatCloseBtn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #22d3ee;
+  z-index: 10;
+  transition: 0.2s;
+}
+#chatCloseBtn:hover {
+  color: #00bcd4;
+  transform: scale(1.2);
+}
+/* Chat Avatar */
+#chatAvatar {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #111;
+  border: 3px solid #22d3ee;
+  box-shadow: 0 0 15px #22d3ee, 0 0 30px #22d3ee;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#chatAvatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #22d3ee, 0 0 40px #22d3ee;
+}
+
+/* Add in your CSS */
+/* Robot Face Container */
+.aiFace {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background: #0f172a; /* dark face */
+  border-radius: 10px; /* slightly squared, like a robot */
+  transform: translate(-50%, -50%);
+  border: 2px solid #22d3ee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Eyes */
+.aiFace .eye {
+  width: 10px;
+  height: 10px;
+  background: #22d3ee;
+  border-radius: 50%;
+  margin: 4px;
+}
+
+/* Mouth */
+.aiFace .mouth {
+  width: 30px;
+  height: 4px;
+  background: #22d3ee;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+
+.aiFace::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 6px;
+  background: #22d3ee;
+  border-radius: 2px;
+}
+
+/* Chat window messages container */
+#chatMessages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* User message bubble */
+.userMsg {
+    background: #000;
+    color: #fff200;
+    padding: 8px 12px;
+    margin: 5px 10px;
+    border-radius: 15px;
+    max-width: 75%;
+    align-self: flex-end;
+    box-shadow: 0 0 8px #fff200;
+}
+
+/* AI message bubble */
+.aiMsg {
+    background: #000;
+    color: #22d3ee;
+    padding: 8px 12px;
+    margin: 5px 10px;
+    border-radius: 15px;
+    max-width: 75%;
+    align-self: flex-start;
+    box-shadow: 0 0 8px #22d3ee;
+}
+
+
+/* Typing indicator bubble */
+.typingMsg {
+    background: #888;
+    color: white;
+    font-style: italic;
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    display: inline-block;
+    max-width: 60%;
+    opacity: 0.7;
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+    100% { box-shadow: 0 0 15px currentColor, 0 0 30px currentColor; }
+}
+
+/* Quick Reply Buttons */
+.quickReplies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 5px 10px 15px 10px;
+}
+
+.quickBtn {
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 1px solid #22d3ee; /* neon blue border */
+    background: #000;           /* black background */
+    color: #22d3ee;            /* neon blue text */
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.quickBtn:hover {
+    background: #22d3ee;  /* neon glow effect on hover */
+    color: #000;
+    box-shadow: 0 0 8px #22d3ee;
+}
+
+/* Logo Splash */
+#logoSplash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;  /* or any background you want behind the logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+
+#logoSplash img {
+  width: 80%;        /* scales on smaller screens */
+  max-width: 650px;  /* caps the size on big screens */
+  animation: logoPulse 1.5s ease-in-out infinite alternate;
+}
+
+/* Optional pulse animation for logo while loading */
+@keyframes logoPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+#logoSplash.fadeOut {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+/* Speed Lines */
+.speed-line {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;           /* thin streak */
+  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+  pointer-events: none;  /* doesn’t block clicks */
+  z-index: 999;          /* above background but below UI */
+  transform: translateX(0);
+  transition: transform 0.2s linear;
+}
+/* Particle Canvas */
+#particlesCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;          /* was 0 */
+  display: none;
+}
+
+/* Ensure content sits above particles */
+section, nav, footer, .hero {
+  position: relative;
+  z-index: 2;
+}
+
+
+.sponsor-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, #22d3ee, #38bdf8);
+  z-index: 9999;
+  box-shadow: 0 0 10px #22d3ee;
+  transition: width 0.1s linear;
+}
+.sponsor-logo-box {
+  height: 120px;
+  background: #000;
+  border: 1px dashed #22d3ee;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.ui-graphic {
+  position: fixed;
+  width: 120px;
+  height: 220px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(34, 211, 238, 0.6),
+    transparent
+  );
+  opacity: 0.45;
+  pointer-events: none;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  z-index: 2;
+}
+
+/* LEFT side */
+.ui-graphic.left.g1 { top: 20%; left: -50px; }   /* slightly off-screen left */
+.ui-graphic.left.g2 { top: 50%; left: -50px; }
+
+/* RIGHT side */
+.ui-graphic.right.g1 { top: 25%; right: -50px; } /* slightly off-screen right */
+.ui-graphic.right.g2 { top: 55%; right: -50px; }
+
+/* Active (slide in) */
+.ui-graphic.active.left  { transform: translateX(50px); }   /* moves to edge */
+.ui-graphic.active.right { transform: translateX(-50px); }  /* moves to edge */
+
+.modal-box {
+  display: flex;
+  flex-direction: column; /* STACK image + caption */
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+
+/* Scroll Speedometer - Left Bottom */
+#speedometer {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 160px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(34,211,238,0.4);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 11px;
+  z-index: 3;
+  backdrop-filter: blur(6px);
+  opacity: 0.85;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+#speedometer.active {
+  animation: neonPulse 2s infinite;
+}
+
+#speedometer .label {
+  color: #22d3ee;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#speedometer .bar {
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#speedometer .fill {
+  height: 100%;
+  width: 0%; /* start empty */
+  background: linear-gradient(90deg, #22d3ee, #00ffff);
+  transition: width 0.15s ease, background 0.2s ease;
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee; }
+  50% { box-shadow: 0 0 20px #22d3ee, 0 0 40px #22d3ee; }
+}
+ 
+
+</style>
+
+</head>
+<body>
+  <div id="scrollProgress"></div>
+
+  <!-- Particle background -->
+<canvas id="particlesCanvas"></canvas>
+
+<!-- Side UI Graphics -->
+<div class="ui-graphic left g1"></div>
+<div class="ui-graphic left g2"></div>
+
+<div class="ui-graphic right g1"></div>
+<div class="ui-graphic right g2"></div>
+
+
+  <!-- Logo Splash Screen -->
+<div id="logoSplash">
+  <img src="Please be black (1).png" alt="Fluxion Fusion Logo" />
+</div>
+
+<div class="speed-line" id="speedLine1"></div>
+<div class="speed-line" id="speedLine2" style="top:50px; height:3px;"></div>
+<div class="speed-line" id="speedLine3" style="top:100px; height:2px;"></div>
+
+<!-- Scroll Speedometer -->
+<div id="speedometer">
+  <div class="label">SCROLL SPEED</div>
+  <div class="bar">
+    <div class="fill"></div>
+  </div>
+</div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="Please be black (1).png" alt="Fluxion Fusion Logo" />
+      <strong>FLUXION FUSION</strong>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#car">Our Car</a>
+      <a href="#team">Team</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+      <a href="https://turbo-dodge-4757c41-fluxion-fusion.base44.app/" target="_blank">Game</a>
+
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Fusing Speed with Precision</h1>
+    <p>
+      Fluxion Fusion is a student Formula Ethara racing team driven by innovation,
+      precision engineering, and a passion for high-performance motorsport.
+    </p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="#team">Meet the Team</a>
+      <a class="btn btn-outline" href="#car">Our Car</a>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about" class="fade-section">
+    <h2>About Us</h2>
+    <p style="color:#d1d5db;">
+      We are a passionate group of students competing in Formula Ethara. Our mission is to design,
+      build, and race a formula-style car while developing real-world engineering and teamwork skills.
+    </p>
+  </section>
+
+  <!-- Our Car -->
+  <section id="car" class="fade-section">
+    <h2 style="text-align:center;">Our Car</h2>
+
+<!-- Car Images -->
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin:40px 0;">
+
+  <!-- Car Template Card -->
+  <div class="card car-card" data-img="Fluxion Fusion body template.jpg" data-caption="Car Template - Initial design template outlining structure and proportions.">
+    <div style="height:200px; border:2px dashed #22d3ee; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:12px;">
+      <img src="Fluxion Fusion body template.jpg" alt="Car Template Image" style="max-height:100%; max-width:100%; border-radius:10px;">
+    </div>
+    <h3>Car Template</h3>
+    <p>Initial design template outlining structure and proportions.</p>
+  </div>
+
+  <!-- Car Model Card -->
+<div class="card car-card" data-img="Screenshot 2026-01-30 220414.png" data-caption="Car Skeleton - Our Formula Ethara car skeleton developed for performance and precision.">
+    <div style="height:200px; border:2px dashed #22d3ee; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:12px;">
+      <img src="Screenshot 2026-01-30 220414.png" alt="Car Skeleton Image" style="max-height:100%; max-width:100%; border-radius:10px;">
+    </div>
+    <h3>Car Skeleton</h3>
+    <p>Our Formula Ethara car skeleton developed for performance and precision.</p>
+  </div>
+
+</div>
+
+
+
+
+  <!-- Car Details -->
+  <div class="cards">
+    <div class="card">
+      <div class="icon">💨</div>
+      <h3>Aerodynamics</h3>
+      <hr>
+      <p>Optimized for speed, stability, and efficiency through smart shaping of the car body.</p>
+    </div>
+    <div class="card">
+      <div class="icon">✏️</div>
+      <h3>Design</h3>
+      <hr>
+      <p>Creative and bold design that gives our car a unique, professional look while keeping it functional.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📏</div>
+      <h3>Precision & Template Accuracy</h3>
+      <hr>
+      <p>The car template was built meticulously, ensuring all proportions and measurements are accurate for a smooth build and consistent performance.</p>
+    </div>
+  </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="fade-section">
+    <h2 style="text-align:center;">Our Team</h2>
+    <div class="cards">
+  <div class="card">
+  <div class="team-img-box">
+    <img src="soft-2.jpg.jpeg" alt="Johan Jipson">
+  </div>
+  <h3>Johan Jipson</h3>
+  <p style="color:#d1d5db; font-style:italic;">Team Leader</p>
+  <p>Johan leads our team with confidence, creativity, and focus. He is the driving force behind Fluxion Fusion.</p>
+</div>
+
+<div class="card">
+  <div class="team-img-box">
+    <img src="soft-3.jpg.jpeg" alt="Ranveer Singh Saini">
+  </div>
+  <h3>Ranveer Singh Saini</h3>
+  <p style="color:#d1d5db; font-style:italic;">Design & Editing</p>
+  <p>Ranveer adds heart to design, shaping the team’s bold and unique style. He is our designer and editor.</p>
+</div>
+
+<div class="card">
+  <div class="team-img-box">
+    <img src="soft-1.jpg.jpeg" alt="Abdul Samad Aga">
+  </div>
+  <h3>Abdul Samad Aga</h3>
+  <p style="color:#d1d5db; font-style:italic;">Finance Manager</p>
+  <p>Abdul Samad is our finance manager, keeping budgets on track and resources in check.</p>
+</div>
+
+<div class="card">
+  <div class="team-img-box">
+    <img src="soft-4.jpg.jpeg" alt="Abdul Malik Ansari">
+  </div>
+  <h3>Abdul Malik Ansari</h3>
+  <p style="color:#d1d5db; font-style:italic;">Engineer</p>
+  <p>Abdul Malik is our team’s engineer, always ready with smart solutions and steady support.</p>
+</div>
+
+    </div>
+  </section>
+
+  <!-- Why Unique -->
+  <section id="unique" class="fade-section">
+    <h2 style="text-align:center;">Why Is Our Team Unique?</h2>
+    <p style="color:#d1d5db; max-width:900px; margin:20px auto; line-height:1.7; text-align:center;">
+      Our team is unique because we work with heart, speed, and creativity. Each of us has clear roles,
+      but we always support one another and grow together. Our name, <strong>Fluxion Fusion</strong>,
+      represents who we are — full of energy, always improving, and united as one team.
+      <br><br>
+      We care deeply about making things look great and work well, balancing design with performance.
+      Most importantly, we are proud of how far we’ve come together and how we continue to push
+      ourselves to be better every step of the way.
+    </p>
+  </section>
+
+ <!-- Sponsors -->
+<section id="sponsors" class="fade-section sponsors">
+  <h2>Our Sponsors</h2>
+  <p style="color:#d1d5db; text-align:center;">Supporting innovation, education, and motorsport excellence.</p>
+
+  <div class="cards" style="margin-top:40px;">
+    <div class="card" style="text-align:center;">
+     <div class="sponsor-logo-box">
+  <img src="sponsor1.jpeg" alt="Sponsor 1 Logo">
+</div>
+
+
+      <h3>Advanced Steel Industries</h3>
+      <p style="color:#d1d5db;">Advanced Steel Industries is a manufacturing company specializing in steel fabrication and industrial solutions. They play an important role in producing strong and reliable steel products and trailers for various industries. Their support for Fluxion Fusion helps us understand the importance of strength, precision, and quality in engineering and design.</p>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div class="sponsor-logo-box">
+  <img src="sponsor2.png" alt="Sponsor 2 Logo">
+</div>
+
+      <h3>EthosEnergy</h3>
+      <p style="color:#d1d5db;">EthosEnergy is a global energy company that provides services and solutions for power generation, oil and gas, and industrial energy systems. They focus on improving efficiency, performance, and sustainability. By supporting Fluxion Fusion, EthosEnergy inspires us to think innovatively and apply real-world engineering concepts to our Formula Ethara project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="fade-section" style="text-align:center;">
+  <h2>Contact Us</h2>
+  <p style="color:#d1d5db;">Interested in supporting or collaborating with Fluxion Fusion?</p>
+  
+  <h3 style="color:#22d3ee; margin-top:20px;">Abu Dhabi Indian School, Muroor Campus</h3>
+  <p style="color:#d1d5db; margin:5px 0;">Main Email: <a href="mailto:fluxionfusion@gmail.com" style="color:#22d3ee;">fluxionfusion@gmail.com</a></p>
+
+  <p style="color:#d1d5db; margin:15px 0; font-style:italic;">
+    If you want to contact the editor individually, use this email:
+  </p>
+  <p style="color:#d1d5db; margin:5px 0;">
+    Ranveer Singh Saini (Designer & Editor – Fluxion Fusion): 
+    <a href="mailto:singhranveer282012@gmail.com" style="color:#22d3ee;">singhranveer282012@gmail.com</a>
+  </p>
+  
+  <a class="btn btn-primary" href="mailto:fluxionfusion@gmail.com">Get in Touch</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2026 Fluxion Fusion — Formula Ethara Team<br>
+  By-Ranveer Singh Saini
+</footer>
+
+<!-- Back to Top -->
+<button id="backToTop">↑ Top</button>
+
+<!-- Modal -->
+<div id="imgModal" class="modal">
+  <span class="modal-close">&times;</span>
+
+  <div class="modal-box">
+    <img class="modal-content" id="modalImg">
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
+</div>
+
+
+<!-- Floating Chat Avatar -->
+<div id="chatAvatar"></div>
+
+<!-- Chat Window -->
+<div id="chatBotWindow" style="display:none; position:fixed; bottom:100px; right:30px; width:300px; max-height:400px; background:#111; color:#22d3ee; border-radius:10px; box-shadow:0 5px 20px rgba(34,211,238,0.5); z-index:1000; overflow:hidden; font-family:Arial, sans-serif;">
+  
+  <div id="chatCloseBtn">&times;</div>
+  
+  <div style="background:#000; padding:10px; font-weight:bold; text-align:center;">Fluxion AI Assistant</div>
+  <div id="chatMessages" style="padding:10px; height:250px; overflow-y:auto; font-size:14px;"></div>
+  
+  <div style="display:flex; border-top:1px solid #22d3ee;">
+    <input id="chatInput" type="text" placeholder="Type your question..." style="flex:1; padding:8px; border:none; background:#222; color:#22d3ee;">
+    <button id="chatSend" style="background:#22d3ee; border:none; color:black; padding:0 12px; cursor:pointer;">Send</button>
+  </div>
+</div>
+
+
+<script>
+// ==================== Page Load & Splash ====================
+// Always start at top on refresh/back navigation
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+// Force scroll to top on load
+window.addEventListener('load', () => {
+  setTimeout(() => { window.scrollTo(0, 0); }, 0);
+
+  // Splash fade
+  const splash = document.getElementById('logoSplash');
+  setTimeout(() => {
+    splash.classList.add('fadeOut');
+    setTimeout(() => { splash.style.display = 'none'; }, 1500);
+  }, 1500);
+});
+
+window.onbeforeunload = () => window.scrollTo(0, 0);
+
+// ==================== Fade-in Sections ====================
+const sections = document.querySelectorAll('.fade-section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+sections.forEach(section => observer.observe(section));
+
+// ==================== Smooth Scroll Links ====================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+
+// ==================== Back to Top Button ====================
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ==================== Modal for Car Images ====================
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const modalCaption = document.getElementById("modalCaption");
+const modalClose = document.querySelector(".modal-close");
+
+document.querySelectorAll('.car-card').forEach(card => {
+  card.addEventListener('click', () => {
+    modalImg.src = card.dataset.img;
+    modalCaption.textContent = card.dataset.caption;
+    modal.style.display = "flex"; // IMPORTANT
+  });
+});
+
+modalClose.onclick = () => modal.style.display = "none";
+
+modal.onclick = e => {
+  if (e.target === modal) modal.style.display = "none";
+};
+
+// ==================== Chat Bot Script ====================
+
+// Chatbot Elements
+const chatAvatar = document.getElementById('chatAvatar'); // Floating avatar
+const chatWindow = document.getElementById('chatBotWindow'); // Chat window
+const chatClose = document.getElementById('chatCloseBtn'); // Close button
+const chatSend = document.getElementById('chatSend');
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+
+// Toggle chat window when clicking avatar
+chatAvatar.addEventListener('click', () => {
+    chatWindow.style.display = chatWindow.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close chat window
+chatClose.addEventListener('click', () => {
+    chatWindow.style.display = 'none';
+});
+
+// Remove old suggestion buttons when typing manually
+chatInput.addEventListener('input', () => {
+    const oldSuggestions = chatMessages.querySelectorAll('.quickReplies');
+    oldSuggestions.forEach(s => s.remove());
+});
+
+// Send message on Enter key
+chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // prevent new line
+        chatSend.click();
+    }
+});
+
+// Predefined responses with optional suggestions
+const responses = [
+    {
+        keywords: ["team", "members"],
+        answer: "Our team is Fluxion Fusion. Johan Jipson is the leader, Ranveer Singh Saini handles design, Abdul Samad Aga manages finance, and Abdul Malik Ansari is our engineer.",
+        suggestions: ["Who is the leader?", "Who is the designer?"]
+    },
+    {
+        keywords: ["leader", "johan", "jipson"],
+        answer: "Johan Jipson is our team leader."
+    },
+    {
+        keywords: ["designer", "ranveer", "saini", "singh"],
+        answer: "Ranveer Singh Saini is our designer and editor."
+    },
+    {
+        keywords: ["engineer", "abdul malik", "ansari"],
+        answer: "Abdul Malik Ansari is our engineer."
+    },
+    {
+        keywords: ["finance", "abdul samad", "aga"],
+        answer: "Abdul Samad Aga manages our finances."
+    },
+    {
+        keywords: ["car", "speed"],
+        answer: "Our Formula Ethara car is designed for speed, stability, and precision.",
+        suggestions: ["Tell me about the car", "What is the car model?"]
+    },
+    {
+        keywords: ["model", "design"],
+        answer: "The car design combines bold aerodynamics with functional engineering."
+    },
+    {
+        keywords: ["sponsor", "sponsors"],
+        answer: "We are supported by sponsors who believe in innovation and motorsport."
+    },
+    {
+        keywords: ["hello", "hi", "hey"],
+        answer: "Hello! Welcome to Fluxion Fusion 👋"
+    },
+    {
+        keywords: ["how are you"],
+        answer: "I’m just a virtual assistant, but I’m doing great! 😊"
+    },
+    {
+        keywords: ["bye", "goodbye"],
+        answer: "Goodbye! Come back soon to check out Fluxion Fusion 🚀"
+    },
+    {
+        keywords: ["where", "location", "school"],
+        answer: "We are based at Abu Dhabi Indian School, Muroor Campus."
+    },
+    {
+        keywords: ["email", "contact"],
+        answer: "You can contact us at fluxionfusion@gmail.com."
+    }
+];
+
+
+// ==================== Send button click with typing animation ====================
+chatSend.addEventListener('click', () => {
+    const userMsg = chatInput.value.trim();
+    if (!userMsg) return;
+
+    // Remove previous suggestions
+    const oldSuggestions = chatMessages.querySelectorAll('.quickReplies');
+    oldSuggestions.forEach(s => s.remove());
+
+    // Show user's message in neon bubble
+    const userDiv = document.createElement('div');
+    userDiv.textContent = userMsg;
+    userDiv.className = 'userMsg';
+    chatMessages.appendChild(userDiv);
+
+    chatInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Typing indicator with animated dots in neon style
+    const typingDiv = document.createElement('div');
+    typingDiv.textContent = "Typing";
+    typingDiv.className = 'typingMsg';
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    let dotCount = 0;
+    const typingInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4;
+        typingDiv.textContent = "Typing" + ".".repeat(dotCount);
+    }, 400);
+
+    // Random typing delay
+    const typingDelay = 1000 + Math.random() * 700; // 1s - 1.7s
+    setTimeout(() => {
+        clearInterval(typingInterval);
+        chatMessages.removeChild(typingDiv);
+
+        let found = false;
+        for (const r of responses) {
+            if (r.keywords.some(k => userMsg.toLowerCase().includes(k))) {
+                const botDiv = document.createElement('div');
+                botDiv.textContent = r.answer;
+                botDiv.className = 'aiMsg';
+                chatMessages.appendChild(botDiv);
+                found = true;
+
+                // Add suggestion buttons if available
+                if (r.suggestions) {
+                    const quickDiv = document.createElement('div');
+                    quickDiv.className = 'quickReplies';
+                    r.suggestions.forEach(suggestion => {
+                        const btn = document.createElement('button');
+                        btn.textContent = suggestion;
+                        btn.className = 'quickBtn';
+                        btn.addEventListener('click', () => {
+                            chatInput.value = suggestion;
+                            chatSend.click();
+                        });
+                        quickDiv.appendChild(btn);
+                    });
+                    chatMessages.appendChild(quickDiv);
+                }
+
+                break;
+            }
+        }
+
+        if (!found) {
+            const botDiv = document.createElement('div');
+            botDiv.textContent = "Sorry, I don’t know the answer. Please contact us at fluxionfusion@gmail.com";
+            botDiv.className = 'aiMsg';
+            chatMessages.appendChild(botDiv);
+        }
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, typingDelay);
+});
+
+// ==================== Avatar Tilt Effect ====================
+chatAvatar.addEventListener('mousemove', e => {
+    const rect = chatAvatar.getBoundingClientRect();
+    const x = e.clientX - (rect.left + rect.width/2);
+    const y = e.clientY - (rect.top + rect.height/2);
+    chatAvatar.style.transform = `translate(${x*0.05}px, ${y*0.05}px) scale(1.05)`;
+});
+
+chatAvatar.addEventListener('mouseleave', () => {
+    chatAvatar.style.transform = 'translate(0,0) scale(1)';
+});
+
+// ==================== Create AI Face ====================
+if (!chatAvatar.querySelector('.aiFace')) {
+    const face = document.createElement('div');
+    face.className = 'aiFace';
+
+    const eyesContainer = document.createElement('div');
+    eyesContainer.style.display = 'flex';
+    eyesContainer.style.justifyContent = 'space-between';
+    eyesContainer.style.width = '40px';
+
+    const leftEye = document.createElement('div');
+    leftEye.className = 'eye';
+    const rightEye = document.createElement('div');
+    rightEye.className = 'eye';
+
+    eyesContainer.appendChild(leftEye);
+    eyesContainer.appendChild(rightEye);
+
+    const mouth = document.createElement('div');
+    mouth.className = 'mouth';
+
+    face.appendChild(eyesContainer);
+    face.appendChild(mouth);
+    chatAvatar.appendChild(face);
+}
+
+// ==================== Scroll Speed Lines ====================
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.speed-line').forEach((line, i) => {
+    line.style.transform = `translateX(${window.scrollY * (0.3 + i*0.1)}px)`;
+  });
+});
+
+// ==================== Particles ====================
+setTimeout(() => {
+  const canvas = document.getElementById('particlesCanvas');
+  canvas.style.display = 'block';
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+  for(let i = 0; i < 40; i++){
+    particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, radius: Math.random()*2+1, speedX: (Math.random()-0.5)*0.3, speedY: (Math.random()-0.5)*0.3 });
+  }
+
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctx.fillStyle = '#22d3ee';
+      ctx.fill();
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;
+      if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+  window.addEventListener('resize', () => { canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
+}, 2000);
+
+// ==================== Scroll Progress Bar ====================
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop/docHeight)*100;
+  scrollProgress.style.width = scrollPercent + '%';
+});
+
+// ==================== Side Graphics ====================
+const sideGraphics = document.querySelectorAll('.ui-graphic');
+window.addEventListener('scroll', () => {
+  const bottomLimit = document.body.scrollHeight - window.innerHeight - 200;
+  sideGraphics.forEach(graphic => {
+    graphic.classList.toggle('active', window.scrollY > 300 && window.scrollY < bottomLimit);
+  });
+});
+
+
+// ==================== Scroll Speedometer w/ Needle ====================
+const speedometer = document.getElementById('speedometer');
+const fill = speedometer.querySelector('.fill');
+
+let lastScroll = window.scrollY;
+let lastTime = Date.now();
+let currentSpeed = 0;
+
+function updateSpeedometer() {
+  currentSpeed *= 0.9; // smooth decay
+  fill.style.width = Math.min(currentSpeed, 100) + '%';
+  fill.style.background = currentSpeed > 70 
+    ? 'linear-gradient(90deg, #00ffff, #ffffff)' 
+    : 'linear-gradient(90deg, #22d3ee, #00ffff)';
+  requestAnimationFrame(updateSpeedometer);
+}
+updateSpeedometer();
+
+window.addEventListener('scroll', () => {
+  const now = Date.now();
+  const deltaY = Math.abs(window.scrollY - lastScroll);
+  const deltaTime = now - lastTime || 16;
+  currentSpeed = Math.min((deltaY / deltaTime) * 100, 100);
+
+
+  lastScroll = window.scrollY;
+  lastTime = now;
+
+  speedometer.classList.toggle('active', window.scrollY > 50);
+
+  clearTimeout(speedometer.fadeTimeout);
+  speedometer.style.opacity = '0.85';
+  speedometer.fadeTimeout = setTimeout(() => {
+    speedometer.style.opacity = '0.3';
+  }, 800);
+});
+
+
+
+</script>
+
+</body>
+</html>
